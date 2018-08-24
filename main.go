@@ -1,6 +1,7 @@
 package main
 
 import (
+	"C"
 	"bufio"
 	"errors"
 	"fmt"
@@ -10,13 +11,11 @@ import (
 	"os/user"
 	"path/filepath"
 	"strings"
-
-	"github.com/bclicn/color"
 )
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println(color.White("Welcome to"), color.BLightRed("BLYA Shell"), color.White("- Bilyk Ilya Shell!"))
+	fmt.Println("Welcome to BLYA Shell -- Bilyk Ilya Shell!")
 	for {
 		user, err := user.Current()
 		if err != nil {
@@ -36,7 +35,7 @@ func main() {
 			currentDir := strings.Split(dir, "/")
 			dir = currentDir[len(currentDir)-1]
 		}
-		fmt.Print(color.BLightBlue("λ "), color.BLightBlue(dir), " ")
+		fmt.Print("λ ", dir, " ")
 
 		// Read the keyboad input.
 		input, err := reader.ReadString('\n')
